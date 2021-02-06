@@ -43,7 +43,7 @@ cd ${OUTPUT_FOLDER}
 tar -zxvf ${BASE_FOLDER}/src/nginx-1.18.0.tar.gz
 cd ${OUTPUT_FOLDER}/nginx-1.18.0
 
-patch -p1 < ${BASE_FOLDER}/src/proxy_connect_rewrite_1018.patch
+patch -p1 < ${BASE_FOLDER}/extras/ngx_http_proxy_connect_module/proxy_connect_rewrite_1018.patch
 tar -zxvf ${BASE_FOLDER}/extras/ngx_http_proxy_connect_module/ngx_http_proxy_connect_module-0.0.2.tar.gz
 
 ./configure --prefix=${PREFIX_FOLDER} \
