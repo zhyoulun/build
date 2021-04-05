@@ -43,13 +43,22 @@ cd ${OUTPUT_FOLDER}
 tar -zxvf ${BASE_FOLDER}/src/nginx-1.18.0.tar.gz
 cd ${OUTPUT_FOLDER}/nginx-1.18.0
 
+# ngx_http_proxy_connect_module对nginx版本有要求
 patch -p1 < ${BASE_FOLDER}/extras/ngx_http_proxy_connect_module/proxy_connect_rewrite_1018.patch
 tar -zxvf ${BASE_FOLDER}/extras/ngx_http_proxy_connect_module/ngx_http_proxy_connect_module-0.0.2.tar.gz
+
+# nginx-rtmp-module
+tar -zxvf ${BASE_FOLDER}/extras/nginx-rtmp-module/nginx-rtmp-module-1.2.1.tar.gz
+
+# openssl
+tar -zxvf ${BASE_FOLDER}/extras/openssl/openssl-OpenSSL_1_1_1j.tar.gz
 
 ./configure --prefix=${PREFIX_FOLDER} \
     --with-cc-opt="-I${OUTPUT_FOLDER}/include" \
     --with-ld-opt="-L${OUTPUT_FOLDER}/lib" \
     --with-http_geoip_module \
-    --add-module=${OUTPUT_FOLDER}/nginx-1.18.0/ngx_http_proxy_connect_module-0.0.2
+    --add-module=${OUTPUT_FOLDER}/nginx-1.18.0/nginx-rtmp-module-1.2.1 \
+    --with-openssl=${OUTPUT_FOLDER}/nginx-1.18.0/openssl-OpenSSL_1_1_1j \
+    --with-debug
 make -j ${NUM_PROC}
 make install
