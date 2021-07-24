@@ -59,6 +59,7 @@ tar -zxvf ${BASE_FOLDER}/extras/openssl/openssl-OpenSSL_1_1_1j.tar.gz
     --with-http_geoip_module \
     --add-module=${OUTPUT_FOLDER}/nginx-1.18.0/nginx-rtmp-module-1.2.1 \
     --with-openssl=${OUTPUT_FOLDER}/nginx-1.18.0/openssl-OpenSSL_1_1_1j \
+    --with-http_ssl_module \
     --with-debug
 make -j ${NUM_PROC}
 make install

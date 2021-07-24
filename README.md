@@ -1,0 +1,8 @@
+- ffmpeg
+  - mac通过
+- nginx
+  - mac通过
+- srs
+- lua
+- openresty
+  - mac通过
