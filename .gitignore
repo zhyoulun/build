@@ -1,3 +1,4 @@
 .DS_Store
 temp/
 output/
+nginx__http_and_rtmp.conf

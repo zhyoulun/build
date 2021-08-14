@@ -48,7 +48,9 @@ patch -p1 < ${BASE_FOLDER}/extras/ngx_http_proxy_connect_module/proxy_connect_re
 tar -zxvf ${BASE_FOLDER}/extras/ngx_http_proxy_connect_module/ngx_http_proxy_connect_module-0.0.2.tar.gz
 
 # nginx-rtmp-module
-tar -zxvf ${BASE_FOLDER}/extras/nginx-rtmp-module/nginx-rtmp-module-1.2.1.tar.gz
+# tar -zxvf ${BASE_FOLDER}/extras/nginx-rtmp-module/nginx-rtmp-module-1.2.1.tar.gz
+# nginx-http-flv-module
+tar  -zxvf ${BASE_FOLDER}/extras/nginx-http-flv-module/nginx-http-flv-module-1.2.9.tar.gz
 
 # openssl
 tar -zxvf ${BASE_FOLDER}/extras/openssl/openssl-OpenSSL_1_1_1j.tar.gz
@@ -57,7 +59,7 @@ tar -zxvf ${BASE_FOLDER}/extras/openssl/openssl-OpenSSL_1_1_1j.tar.gz
     --with-cc-opt="-I${OUTPUT_FOLDER}/include" \
     --with-ld-opt="-L${OUTPUT_FOLDER}/lib" \
     --with-http_geoip_module \
-    --add-module=${OUTPUT_FOLDER}/nginx-1.18.0/nginx-rtmp-module-1.2.1 \
+    --add-module=${OUTPUT_FOLDER}/nginx-1.18.0/nginx-http-flv-module-1.2.9 \
     --with-openssl=${OUTPUT_FOLDER}/nginx-1.18.0/openssl-OpenSSL_1_1_1j \
     --with-http_ssl_module \
     --with-debug
