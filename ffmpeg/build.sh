@@ -35,6 +35,7 @@ run_init_dep(){
     dep_build extras/x265
     dep_build extras/fdk-aac
     dep_build extras/zeromq
+    dep_build extras/libaom-av1
     # dep_build extras/flite
     # dep_build extras/libgd
 }
@@ -64,6 +65,7 @@ PKG_CONFIG_PATH=${OUTPUT_FOLDER}/lib/pkgconfig && ./configure --prefix=${PREFIX_
     --enable-libzmq \
     --enable-libx264 \
     --enable-libx265 \
+    --enable-libaom \
     --enable-libmp3lame \
     --enable-libfdk-aac \
     --enable-libopus \
