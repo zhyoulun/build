@@ -22,6 +22,9 @@ if test -d ${TEMP_FOLDER}; then
 fi
 mkdir -p ${TEMP_FOLDER}
 
+# 清理
+trap 'rm -rf ${TEMP_FOLDER}' EXIT
+
 # 进入临时文件夹并解压
 cd ${TEMP_FOLDER} && tar -zxvf ${FILE}
 if test $? -ne 0; then
@@ -36,7 +39,8 @@ if test ! -d ${UNZIP_FOLDER}; then
 fi
 
 cd ${UNZIP_FOLDER}
-./configure --prefix=${INSTALL} --enable-static --enable-pic && make -j ${NUM_PROC} && make install
+# ./configure --prefix=${INSTALL} --enable-static --enable-pic --extra-cflags="-I/Users/zhangyoulun/codes/github/build/ffmpeg/temp/install/include" --extra-ldflags="-L/Users/zhangyoulun/codes/github/build/ffmpeg/temp/install/lib" && make -j ${NUM_PROC} && make install
+./configure --prefix=${INSTALL} --enable-static --enable-pic --extra-cflags="-I/Users/zhangyoulun/codes/github/FFmpeg" && make -j ${NUM_PROC} && make install
 
 if test $? -ne 0; then
     echo "configure&make&make install fail"
@@ -44,4 +48,4 @@ if test $? -ne 0; then
 fi
 
 # 清理
-rm -rf ${TEMP_FOLDER}
+# rm -rf ${TEMP_FOLDER}
