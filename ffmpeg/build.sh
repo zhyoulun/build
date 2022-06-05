@@ -69,6 +69,9 @@ PKG_CONFIG_PATH=${OUTPUT_FOLDER}/lib/pkgconfig && ./configure --prefix=${PREFIX_
     --enable-libmp3lame \
     --enable-libfdk-aac \
     --enable-libopus \
+    --enable-muxer=dash \
+    --enable-demuxer=dash \
+    --enable-libxml2 \
     --enable-nonfree \
     --enable-debug \
     --disable-asm \
