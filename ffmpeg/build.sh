@@ -1,4 +1,9 @@
 #!/bin/bash
+
+# brew install nasm
+# brew install gsed
+# brew install cmake
+
 set -x
 BASE_FOLDER=$(cd `dirname $0`; pwd)
 OUTPUT_FOLDER=${BASE_FOLDER}/output
