@@ -1,8 +1,15 @@
 #!/bin/bash
 
+# mac
+
 # brew install nasm
-# brew install gsed
 # brew install cmake
+
+# linux
+# apt install nasm
+# apt install cmake
+# apt install autoconf
+# apt install libtool
 
 set -x
 BASE_FOLDER=$(cd `dirname $0`; pwd)
@@ -52,14 +59,16 @@ fi
 
 # 编译ffmpeg
 cd ${OUTPUT_FOLDER}
-cp -R /Users/zhangyoulun/codes/github/FFmpeg ${OUTPUT_FOLDER}
+# cp -R /Users/zhangyoulun/codes/github/FFmpeg ${OUTPUT_FOLDER}
+cp -R /home/zyl/codes/github/FFmpeg ${OUTPUT_FOLDER}
 
 cd ${OUTPUT_FOLDER}/FFmpeg
-PKG_CONFIG_PATH=${OUTPUT_FOLDER}/lib/pkgconfig && ./configure --prefix=${PREFIX_FOLDER} \
+PKG_CONFIG_PATH=${OUTPUT_FOLDER}/lib/pkgconfig ./configure --prefix=${PREFIX_FOLDER} \
     --extra-cflags="-I${OUTPUT_FOLDER}/include" \
 	--extra-ldflags="-L${OUTPUT_FOLDER}/lib" \
     --pkg-config-flags="--static" \
     --enable-gpl \
+    --enable-gnutls \
     --enable-libvpx \
     --enable-encoder=libvpx_vp8 \
     --enable-encoder=libvpx_vp9 \
@@ -81,7 +90,12 @@ PKG_CONFIG_PATH=${OUTPUT_FOLDER}/lib/pkgconfig && ./configure --prefix=${PREFIX_
     --enable-debug \
     --disable-asm \
     --disable-optimizations \
-    --enable-shared
+    --enable-shared \
+    --enable-pthreads \
+    --enable-pic \
+    --enable-rpath \
+    --enable-libvvdec \
+    --enable-libvvenc
 make -j ${NUM_PROC}
 make install
 

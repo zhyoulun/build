@@ -35,7 +35,7 @@ if test ! -d ${UNZIP_FOLDER}; then
 fi
 
 cd ${UNZIP_FOLDER}
-./configure --prefix=${INSTALL} && gsed -i '2d' include/libmp3lame.sym && make -j ${NUM_PROC} && make install
+./configure --prefix=${INSTALL} && sed -i '2d' include/libmp3lame.sym && make -j ${NUM_PROC} && make install
 
 if test $? -ne 0; then
     echo "configure&make&make install fail"
